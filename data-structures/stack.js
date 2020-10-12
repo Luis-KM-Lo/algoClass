@@ -52,29 +52,56 @@ What's the time complexity?
 
 function Stack(capacity) {
   // implement me...
+  this.storage = '';
+  this.length = 0;
+  this.capacity = capacity
 }
 
-Stack.prototype.push = function(value) {
+// Time complexity: O(1)
+
+Stack.prototype.push = function(val) {
   // implement me...
+  // this.storage[this.length++] = value;
+  if(this.length >= this.capacity) {
+    console.log("Max capacity already reached. Remove element before adding a new one.")
+    return ;
+  }
+  this.length++;
+  if(this.storage.length === 0) this.storage = `${val}`
+  else this.storage = this.storage.concat('-', val)
 };
-// Time complexity:
+// Time complexity: O(N)
 
 Stack.prototype.pop = function() {
   // implement me...
+  // if (this.length === 0) return undefined;
+  // const popped = this.storage[--this.length];
+  // delete this.storage[this.length];
+  // return popped;
+  if(this.length <= 0) return undefined;
+  if(!this.storage) return this.storage
+  let temp = this.storage.split("-")
+  let deleted = temp.pop();
+  this.storage = temp.join('-')
+  this.length--;
+  return deleted
 };
-// Time complexity:
+// Time complexity: O(N)
 
 Stack.prototype.peek = function() {
-  // implement me...
+  // implement me... 
+  if(!this.storage) return this.storage
+  // if(this.storage && !this.storage.includes("-")) return this.storage; 
+  let index = this.storage.indexOf("-")
+  if(index === -1) return this.storage 
+  return this.storage.slice(0, index)
 };
-// Time complexity:
 
-Stack.prototype.count = function() {
-  // implement me...
-};
-// Time complexity:
-
-
+Stack.prototype.sort = function() {
+  let temp = this.storage.split("-")
+  temp.sort((a,b) => a - b);
+  this.storage = temp.join('-')
+}
 /*
 *** Exercises:
 
@@ -93,3 +120,5 @@ You are given three towers (stacks) and N disks, each of different size. You can
    3. no disk can be placed on top of a disk that is smaller than it
 The disks begin on tower#1. Write a function that will move the disks from tower#1 to tower#3 in such a way that none of the constraints are violated.
  */
+
+ module.exports = Stack;

@@ -1,0 +1,22 @@
+{
+  "name": "algoclass",
+  "version": "1.0.0",
+  "description": "Welcome to the exercises. This is where the magic happens!",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luis-KM-Lo/algoClass.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luis-KM-Lo/algoClass/issues"
+  },
+  "homepage": "https://github.com/Luis-KM-Lo/algoClass#readme",
+  "devDependencies": {
+    "jest": "^26.5.2"
+  }
+}
